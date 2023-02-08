@@ -1,1 +1,36 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Pixels Art</title>
+</head>
+<body>
+    <header>
+        <h1 id="title">Paleta de Cores</h1>
+    </header>
+    <main>
+        <section id="color-palette">
+            <p id="choose-color">Escolha a cor aqui</p>
+            <div class="color"></div>
+            <div class="color"></div>
+            <div class="color"></div>
+            <div class="color"></div>
+            <button id="button-random-color">Cores aleatórias</button>
+        </section>
+        <section>
+            <p id="paragraph-pixel-board">Grade de Pixels</p>
+            <form id="imput-and-button-board-size">
+                <input id="board-size" type="number" min="1"></input>
+                <button type="submit" id="generate-board">'VQV'</button>
+            </form>
+            <button id="clear-board">Limpar</button>
+        </section>
+        <section id="pixel-board">
+        </section>
+    </main>
+    <script src="./script.js"></script>
+</body>
+</html>

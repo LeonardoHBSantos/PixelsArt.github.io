@@ -1,0 +1,113 @@
+@font-face {
+  font-family: Louis;
+  src: url('./fonts/louis_george_caf/Louis\ George\ Cafe\ Bold.ttf');
+}
+
+@font-face {
+  font-family: Gilbert;
+  src: url('./fonts/gilbert_qualifi/GilbertQualifiDemo.ttf');
+}
+
+html {
+  min-height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url('./images/background.jpg');
+}
+
+#title {
+  text-align: center;
+  font-size: 75px;
+  font-family: Gilbert, sans-serif;
+  font-weight: 2;
+  color: rgb(68, 157, 209);
+  -webkit-text-stroke: 1px white;
+}
+
+#color-palette {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.color {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  border: 1px solid black;
+}
+
+button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  border-radius: 20px;
+  color: white;
+  background-color: rgb(68, 157, 209);
+  border: 2px solid white;
+}
+
+#button-random-color {
+  margin-top: 20px;
+}
+
+#choose-color {
+  text-align: center;
+  font-family: Louis, sans-serif;
+  font-size: 20px;
+  color: rgb(68, 157, 209);
+  -webkit-text-stroke: 0.5px white;
+}
+
+#pixel-board {
+  width: 205px;
+  margin: 0 auto;
+}
+
+.pixel {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  border: 1px solid black;
+  background-color: white;
+  margin-bottom: -5px;
+  margin-left: -1px;
+}
+
+#paragraph-pixel-board {
+  text-align: center;
+  font-family: Louis, sans-serif;
+  font-size: 20px;
+  color: rgb(68, 157, 209);
+  -webkit-text-stroke: 0.5px white;
+}
+
+#clear-board {
+  margin-bottom: 20px;
+}
+
+#imput-and-button-board-size {
+  width: fit-content;
+  margin: 20px auto;
+}
+
+#board-size {
+  display: inline-block;
+  width: 150px;
+  padding: 10px;
+  border-radius: 20px;
+  color: rgb(68, 157, 209);
+  border: 2px solid rgb(68, 157, 209);
+}
+
+#generate-board {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  border-radius: 20px;
+  color: white;
+  background-color: rgb(68, 157, 209);
+  border: 2px solid white;
+}
