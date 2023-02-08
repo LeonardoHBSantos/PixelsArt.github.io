@@ -130,7 +130,7 @@ const coloringPixel = (object) => {
   savePixelsInLocalStorage();
 };
 
-// Adiciona o EventListener aos pixels para serem pintadosCódigo refeito baseado no projeto : https://www.linkedin.com/pulse/projeto-pixels-art-renan-oliveira/?originalSubdomain=pt);
+// Adiciona o EventListener aos pixels para serem pintados (Código refeito baseado no projeto : https://www.linkedin.com/pulse/projeto-pixels-art-renan-oliveira/?originalSubdomain=pt);
 
 const pixelBoard = document.getElementById('pixel-board');
 pixelBoard.addEventListener('click', (event) => {
@@ -169,7 +169,7 @@ const restorePixelsDesign = () => {
 // Função que muda o tamanho do pixel board;
 
 const pixelBoardWidth = (size, qtdPixels) => {
-  const totalWidth = (size * qtdPixels) + parseInt(qtdPixels, 10);
+  const totalWidth = (size * qtdPixels) + (parseInt(qtdPixels, 10) * 2);
   pixelBoard.style.width = `${totalWidth}px`;
 };
 
