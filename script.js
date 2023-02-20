@@ -30,6 +30,73 @@ const savePixelsInLocalStorage = () => {
   localStorage.setItem('pixelBoard', JSON.stringify(pixelsDesign));
 };
 
+// Salvar número de cores na paleta no LocalStorage;
+
+const saveColorsNumberInLocalStorage = (numberColors) => {
+  localStorage.setItem('colorsNumber', JSON.stringify(numberColors));
+};
+
+const restoreNumberColors = () => {
+  if (JSON.parse(localStorage.getItem('colorsNumber')) === null || '') {
+    createNumberColors(9);
+  } else {
+  const getNumberColors = JSON.parse(localStorage.getItem('colorsNumber'));
+  changeNumberColors(getNumberColors);
+  }
+};
+
+//Função cria numero variado de cores na paleta
+
+const createNumberColors = (number) => {
+const sectionColorPallete = document.getElementById('color-palette');
+  for (let i = 1; i <= number; i += 1) {
+    const divColorPallete = document.createElement('div');
+    divColorPallete.className = 'color';
+    sectionColorPallete.appendChild(divColorPallete);
+  }
+}
+
+// Função que verifica a quantidade de cores inserida pelo usuário;
+
+const verifyInputColors = (input) => {
+  let newInput;
+  if (input === '') {
+    alert('Quantidade de cores inválida!');
+    newInput = 8;
+  } else if (parseInt(input, 10) < 3) {
+    newInput = 3;
+  } else if (parseInt(input, 10) > 12) {
+    newInput = 12;
+  } else {
+    newInput = input;
+  }
+  return newInput;
+};
+
+// Botão que muda a quantidade de cores da paleta
+
+const changeNumberColors = (number) => {
+  if (typeof number == 'undefined') {
+    const numberColorsValue = document.getElementById('qtd-colors').value;
+    const numberColors = verifyInputColors(numberColorsValue);
+    const removeColors = document.getElementById('color-palette').innerHTML = '';;
+    createNumberColors(numberColors);
+    changeColors();
+    saveColorsNumberInLocalStorage(numberColors);
+  } else {
+    const removeColors = document.getElementById('color-palette').innerHTML = '';;
+    createNumberColors(number);
+  }
+};
+
+
+
+const buttonNumberColors = document.getElementById('button-qtd-colors');
+buttonNumberColors.addEventListener('click', () => {
+  event.preventDefault();
+  changeNumberColors();
+});
+
 // Função cria cores Aleatórias (Código feito em referencia com este link : https://wallacemaxters.com.br/blog/48/como-gerar-cores-aleatorias-no-javascript);
 
 const createColors = () => {
@@ -43,8 +110,9 @@ const createColors = () => {
 
 const changeColors = () => {
   const colors = document.getElementsByClassName('color');
-  colors[0].style.backgroundColor = 'rgb(0, 0, 0)';
-  for (let i = 1; i < colors.length; i += 1) {
+  colors[0].style.backgroundColor = 'black';
+  colors[colors.length - 1].style.backgroundColor = 'white';
+  for (let i = 1; i < colors.length - 1; i += 1) {
     colors[i].style.backgroundColor = createColors();
   }
   saveColorsInLocalStorage();
@@ -117,10 +185,6 @@ colors.addEventListener('click', (event) => {
   setClass(event.target);
 });
 
-// Definir preto como primeiro selecionado;
-
-setClass(document.getElementsByClassName('color')[0]);
-
 // Função responsavel por pintar os pixels selecionados;
 
 const coloringPixel = (object) => {
@@ -130,11 +194,13 @@ const coloringPixel = (object) => {
   savePixelsInLocalStorage();
 };
 
-// Adiciona o EventListener aos pixels para serem pintadosCódigo refeito baseado no projeto : https://www.linkedin.com/pulse/projeto-pixels-art-renan-oliveira/?originalSubdomain=pt);
+// Adiciona o EventListener aos pixels para serem pintados (Código refeito baseado no projeto : https://www.linkedin.com/pulse/projeto-pixels-art-renan-oliveira/?originalSubdomain=pt);
 
 const pixelBoard = document.getElementById('pixel-board');
 pixelBoard.addEventListener('click', (event) => {
+  if (event.target.className === 'pixel') {
   coloringPixel(event.target);
+  }
 });
 
 // Função que define a cor de todos os pixels como branca e salva no local storage se caso apagar o desenho antes de fechar a página;
@@ -168,9 +234,12 @@ const restorePixelsDesign = () => {
 
 // Função que muda o tamanho do pixel board;
 
-const pixelBoardWidth = (size, qtdPixels) => {
-  const totalWidth = (size * qtdPixels) + parseInt(qtdPixels, 10);
-  pixelBoard.style.width = `${totalWidth}px`;
+const pixelBoardWidth = (size) => {
+  if (document.querySelector('#pixel-board').clientWidth <= 720) {
+    pixelBoard.style.gridTemplateColumns = 'repeat(' + size + ', 3vh)';
+  } else {
+  pixelBoard.style.gridTemplateColumns = 'repeat(' + size + ', 40px)';
+  }
 };
 
 // Função que verifica a quantidade de pixels inserida pelo usuário;
@@ -182,9 +251,12 @@ const verifyInput = (input) => {
     newInput = 5;
   } else if (parseInt(input, 10) < 5) {
     newInput = 5;
-  } else if (parseInt(input, 10) > 50) {
-    newInput = 50;
-  } else {
+  } else if (parseInt(input, 10) > 25) {
+    newInput = 25;
+  } else if (parseInt(input, 10) > 15 && document.querySelector('#pixel-board').clientWidth <= 720) {
+    newInput = 15;
+  }
+   else {
     newInput = input;
   }
   return newInput;
@@ -204,7 +276,7 @@ buttonPixelsSize.addEventListener('click', (event) => {
   const input = document.getElementById('board-size').value;
   const inputValue = verifyInput(input);
   createPixelBoard(inputValue * inputValue);
-  pixelBoardWidth(40, inputValue);
+  pixelBoardWidth(inputValue);
   savePixelsNumberInLocalStorage(inputValue);
 });
 
@@ -216,12 +288,16 @@ const restorePixelsNumber = () => {
     createPixelBoard(25);
   } else {
     createPixelBoard(restoredPixelsNumber * restoredPixelsNumber);
-    pixelBoardWidth(40, restoredPixelsNumber);
+    pixelBoardWidth(restoredPixelsNumber);
   }
 };
 
 // Define as funções que serão executadas ao carregar a página
 
-initColors();
-restorePixelsNumber();
-restorePixelsDesign();
+window.onload = () => {
+  restoreNumberColors();
+  initColors();
+  restorePixelsNumber();
+  restorePixelsDesign();
+  setClass(document.getElementsByClassName('color')[0]);
+}

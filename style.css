@@ -34,6 +34,7 @@ html {
   width: 40px;
   height: 40px;
   display: inline-block;
+  margin: 20px 2px;
   border: 1px solid black;
 }
 
@@ -48,21 +49,52 @@ button {
   border: 2px solid white;
 }
 
+#paragraph-submit {
+  text-align: center;
+  font-family: Louis, sans-serif;
+  font-size: 18px;
+  color: rgb(68, 157, 209);
+  -webkit-text-stroke: 0.5px white;
+  width: fit-content;
+  margin: 20px auto;
+}
+
+#imput-and-button-qtd-colors {
+  text-align: center;
+  width: fit-content;
+  margin: 20px auto;
+}
+
+#qtd-colors {
+  display: inline-block;
+  width: 120px;
+  padding: 10px;
+  border-radius: 20px;
+  color: rgb(68, 157, 209);
+  border: 2px solid rgb(68, 157, 209);
+}
+
+#button-qtd-colors{
+ display: inline-block;
+}
+
 #button-random-color {
-  margin-top: 20px;
+  display: block;
+  margin: 0 auto 20px;
 }
 
 #choose-color {
   text-align: center;
   font-family: Louis, sans-serif;
-  font-size: 20px;
+  font-size: 25px;
   color: rgb(68, 157, 209);
   -webkit-text-stroke: 0.5px white;
 }
 
 #pixel-board {
-  width: 205px;
-  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(5, 40px);
+  justify-content: center;
 }
 
 .pixel {
@@ -73,14 +105,6 @@ button {
   background-color: white;
   margin-bottom: -5px;
   margin-left: -1px;
-}
-
-#paragraph-pixel-board {
-  text-align: center;
-  font-family: Louis, sans-serif;
-  font-size: 20px;
-  color: rgb(68, 157, 209);
-  -webkit-text-stroke: 0.5px white;
 }
 
 #clear-board {
@@ -103,11 +127,53 @@ button {
 
 #generate-board {
   display: inline-block;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 10px;
-  border-radius: 20px;
-  color: white;
-  background-color: rgb(68, 157, 209);
-  border: 2px solid white;
+}
+
+@media screen and (max-device-width: 720px){
+  #title {
+    font-size: 5vh;
+    -webkit-text-stroke: 0.1vh white;
+    
+  }
+
+  #color-palette {
+    width: 80%;
+  }
+
+  .color {
+    width: 6vh;
+    height: 6vh;
+    margin: 2vh 0.3vh;
+    border: 0.1vh solid black;
+  }
+  
+  #paragraph-submit {
+    font-size: 2.5vh;
+    -webkit-text-stroke: 0.1px white;
+  }
+  
+  #qtd-colors {
+    width: 20vh;
+  }
+
+  #pixel-board {
+    display: grid;
+    grid-template-columns: repeat(5, 3vh);
+    justify-content: center;
+  }
+
+  .pixel {
+    width: 3vh;
+    height: 3vh;
+  }
+  
+  #choose-color {
+    width: 90%;
+    margin: 20px auto;
+    font-size: 3.5vh;
+  }
+  
+  #board-size {
+    width: 20vh;
+  }
 }
