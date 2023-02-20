@@ -12,20 +12,23 @@
         <h1 id="title">Arte com Pixels</h1>
     </header>
     <main>
-        <section id="color-palette">
-            <p id="choose-color">Paleta de Cores</p>
-            <div class="color"></div>
-            <div class="color"></div>
-            <div class="color"></div>
-            <div class="color"></div>
-            <button id="button-random-color">Cores aleatórias</button>
-        </section>
-        <section id="pixel-board">
-        </section>
         <section>
-            <p id="paragraph-submit">Defina o tamanho do quadro de pixels</>
+            <section id="imput-and-button-qtd-colors">
+                <p id="choose-color">Quantas cores você quer em sua paleta?</p>
+                
+                <input id="qtd-colors" type="number" name="input-qtd-colors" min="1" max="12" placeholder="De 3 a 12 Cores">
+                <button id="button-qtd-colors" type="submit">Gerar Paleta</button>
+            </section>
+            <section id="color-palette">
+            </section>
+            <button id="button-random-color">Trocar Cores</button>
+        </section>
+            <section id="pixel-board">
+            </section>
+            <section>
+            <p id="paragraph-submit">Defina o tamanho do quadro de pixels</p>
             <form id="imput-and-button-board-size">
-                <input id="board-size" type="number" min="1"></input>
+                <input id="board-size" type="number" min="1" placeholder="Largura (5 a 50)"></input>
                 <button type="submit" id="generate-board">Enviar</button>
             </form>
             <button id="clear-board">Limpar Pixels</button>
