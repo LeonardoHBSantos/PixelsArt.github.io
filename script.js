@@ -235,7 +235,11 @@ const restorePixelsDesign = () => {
 // Função que muda o tamanho do pixel board;
 
 const pixelBoardWidth = (size) => {
+  if (document.querySelector('#pixel-board').clientWidth <= 720) {
+    pixelBoard.style.gridTemplateColumns = 'repeat(' + size + ', 3vh)';
+  } else {
   pixelBoard.style.gridTemplateColumns = 'repeat(' + size + ', 40px)';
+  }
 };
 
 // Função que verifica a quantidade de pixels inserida pelo usuário;
@@ -247,9 +251,12 @@ const verifyInput = (input) => {
     newInput = 5;
   } else if (parseInt(input, 10) < 5) {
     newInput = 5;
-  } else if (parseInt(input, 10) > 50) {
-    newInput = 50;
-  } else {
+  } else if (parseInt(input, 10) > 25) {
+    newInput = 25;
+  } else if (parseInt(input, 10) > 15 && document.querySelector('#pixel-board').clientWidth <= 720) {
+    newInput = 15;
+  }
+   else {
     newInput = input;
   }
   return newInput;

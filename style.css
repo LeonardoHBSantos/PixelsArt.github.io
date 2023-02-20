@@ -128,3 +128,52 @@ button {
 #generate-board {
   display: inline-block;
 }
+
+@media screen and (max-device-width: 720px){
+  #title {
+    font-size: 5vh;
+    -webkit-text-stroke: 0.1vh white;
+    
+  }
+
+  #color-palette {
+    width: 80%;
+  }
+
+  .color {
+    width: 6vh;
+    height: 6vh;
+    margin: 2vh 0.3vh;
+    border: 0.1vh solid black;
+  }
+  
+  #paragraph-submit {
+    font-size: 2.5vh;
+    -webkit-text-stroke: 0.1px white;
+  }
+  
+  #qtd-colors {
+    width: 20vh;
+  }
+
+  #pixel-board {
+    display: grid;
+    grid-template-columns: repeat(5, 3vh);
+    justify-content: center;
+  }
+
+  .pixel {
+    width: 3vh;
+    height: 3vh;
+  }
+  
+  #choose-color {
+    width: 90%;
+    margin: 20px auto;
+    font-size: 3.5vh;
+  }
+  
+  #board-size {
+    width: 20vh;
+  }
+}
